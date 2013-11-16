@@ -1,0 +1,40 @@
+﻿@{
+   
+var db = Database.Open("bakery"); 
+var query = "SELECT * FROM Products"; 
+} 
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+ </head>  
+
+<body> 
+<h1>Listado de Productos</h1> 
+<table border="1" width="80%" > 
+  
+    <tr class= "tabla" >
+   <th>Id</th> 
+  <th>Product</th> 
+  <th>Description</th> 
+  <th>Price</th> 
+    </tr>
+      
+   @foreach(var row in db.Query(query))
+     {
+        <tr class= "tabladeta"> 
+        <td>@row.Id</td> 
+        <td>@row.Name</td> 
+        <td>@row.Description</td> 
+        <td align="right">@row.Price</td> 
+       </tr> 
+      }
+</table> 
+    <h1></h1>
+   <iframe src="grafico2.cshtml" height="400" width="600" style="margin-left: 83px;"> </iframe>
+    <h1></h1>
+</body>
+</html>
